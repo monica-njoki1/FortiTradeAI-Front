@@ -1,2 +1,2 @@
 https://fortitrade-ai.vercel.app/
-https://fortitradeai-back.onrender.com
+https://fortitradeai.onrender.com
