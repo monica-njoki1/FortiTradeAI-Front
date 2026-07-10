@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://fortitrade-ai.vercel.app/";
 
 const client = axios.create({
   baseURL: API_BASE,
@@ -26,7 +26,7 @@ client.interceptors.response.use(
 );
 
 export const authApi = {
-  register: (email, password) => client.post("/auth/register", { email, password }),
+  register: (name, email, password) => client.post("/auth/register", { name, email, password }),
   login: (email, password) => client.post("/auth/login", { email, password }),
   me: () => client.get("/auth/me"),
   updateProfilePic: (imageDataUrl) => client.patch("/auth/profile-pic", { image: imageDataUrl }),

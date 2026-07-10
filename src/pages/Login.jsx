@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ShieldCheck, Mail, Lock } from "lucide-react";
+import { ShieldCheck, Mail, Lock, User } from "lucide-react";
 import { authApi } from "../api/client";
 import Footer from "../components/Footer";
 
 export default function Login() {
   const [isRegister, setIsRegister] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Login() {
     setLoading(true);
     try {
       const res = isRegister
-        ? await authApi.register(form.email, form.password)
+        ? await authApi.register(form.name, form.email, form.password)
         : await authApi.login(form.email, form.password);
       localStorage.setItem("forti_token", res.data.token);
       navigate("/dashboard");
@@ -58,6 +58,20 @@ export default function Login() {
           </h2>
           <p className="text-forti-cyan/40 text-xs tracking-wide">FORTITRADE AI</p>
         </div>
+
+        {isRegister && (
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 -translate-y-1/2 text-forti-cyan/40" size={16} />
+            <input
+              type="text"
+              placeholder="Full name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="w-full bg-forti-black/60 border border-forti-cyan-dim/50 rounded-lg pl-10 pr-3 py-3 text-sm text-forti-cyan placeholder-forti-cyan/30 focus:border-forti-cyan focus:outline-none focus:shadow-glow transition"
+              required
+            />
+          </div>
+        )}
 
         <div className="relative">
           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-forti-cyan/40" size={16} />
