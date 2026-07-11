@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-xs: 480px;
   --color-forti-black: #05070a;
   --color-forti-panel: #0b0e14;
   --color-forti-cyan: #38bdf8;

@@ -72,16 +72,16 @@ export default function Dashboard() {
     <div className="min-h-screen flex flex-col bg-forti-black">
       <Navbar />
 
-      <div className="max-w-5xl mx-auto px-6 py-10 space-y-6 flex-1 w-full">
-        <div className="bg-forti-panel border border-forti-cyan-dim/40 rounded-xl p-6 flex items-center gap-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-5 sm:space-y-6 flex-1 w-full">
+        <div className="bg-forti-panel border border-forti-cyan-dim/40 rounded-xl p-4 sm:p-6 flex flex-col xs:flex-row items-center xs:items-center gap-4 sm:gap-6 text-center xs:text-left">
           <ProfilePicUpload user={user} onUpdate={setUser} />
           <div>
-            <p className="text-forti-cyan font-bold tracking-wide">{user?.name || user?.email}</p>
-            <p className="text-forti-cyan/50 text-xs mt-1">{user?.email}</p>
+            <p className="text-forti-cyan font-bold tracking-wide">{user?.name}</p>
+            <p className="text-forti-cyan/50 text-xs mt-1 tracking-widest uppercase">FortiTrade AI</p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
           <div className="space-y-6">
             <TradeForm onTradeResult={handleTradeResult} />
             <FraudAlert result={lastResult} />
@@ -89,7 +89,7 @@ export default function Dashboard() {
           <PortfolioCard trades={trades} onDelete={handleDeleteTrade} />
         </div>
 
-        <div className="bg-forti-panel border border-forti-danger/30 rounded-xl p-6">
+        <div className="bg-forti-panel border border-forti-danger/30 rounded-xl p-4 sm:p-6">
           <h3 className="text-forti-danger text-sm tracking-widest uppercase mb-2">Danger Zone</h3>
           <p className="text-forti-cyan/50 text-xs mb-4">
             Deleting your account permanently removes your profile and trade history. This cannot be undone.
@@ -103,20 +103,22 @@ export default function Dashboard() {
               <Trash2 size={14} /> Delete Account
             </button>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col xs:flex-row items-start xs:items-center gap-2 xs:gap-3">
               <p className="text-forti-cyan text-xs">Are you sure?</p>
-              <button
-                onClick={handleDeleteAccount}
-                className="text-xs bg-forti-danger text-forti-black font-bold px-3 py-1.5 rounded-md"
-              >
-                Yes, delete
-              </button>
-              <button
-                onClick={() => setShowDeleteConfirm(false)}
-                className="text-xs text-forti-cyan/60 px-3 py-1.5"
-              >
-                Cancel
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleDeleteAccount}
+                  className="text-xs bg-forti-danger text-forti-black font-bold px-3 py-1.5 rounded-md"
+                >
+                  Yes, delete
+                </button>
+                <button
+                  onClick={() => setShowDeleteConfirm(false)}
+                  className="text-xs text-forti-cyan/60 px-3 py-1.5"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           )}
         </div>

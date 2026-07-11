@@ -12,12 +12,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between px-8 py-4 border-b border-forti-cyan-dim/40 bg-forti-panel/60 backdrop-blur">
-      <Link to="/" className="flex items-center gap-2 text-forti-cyan font-bold tracking-widest">
-        <ShieldCheck size={22} />
-        FORTITRADE AI
+    <nav className="flex items-center justify-between px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-b border-forti-cyan-dim/40 bg-forti-panel/60 backdrop-blur">
+      <Link to="/" className="flex items-center gap-1.5 sm:gap-2 text-forti-cyan font-bold tracking-widest text-xs sm:text-sm">
+        <ShieldCheck size={18} className="sm:w-[22px] sm:h-[22px]" />
+        <span className="hidden xs:inline">FORTITRADE AI</span>
+        <span className="xs:hidden">FORTITRADE</span>
       </Link>
-      <div className="flex gap-6 text-sm text-forti-cyan/80">
+      <div className="flex gap-3 sm:gap-6 text-xs sm:text-sm text-forti-cyan/80">
         {isLoggedIn ? (
           <>
             <Link to="/dashboard" className="hover:text-forti-cyan">Dashboard</Link>

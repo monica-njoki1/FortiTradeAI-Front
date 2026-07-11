@@ -10,7 +10,7 @@ export default function Landing() {
     <div className="min-h-screen flex flex-col bg-forti-black text-forti-cyan">
       <Navbar />
 
-      <section className="text-center pt-16 px-6 flex-1">
+      <section className="text-center pt-10 sm:pt-16 px-4 sm:px-6 flex-1">
         <h1 className="text-4xl md:text-6xl font-black tracking-wider mb-4">
           FORTI<span className="text-white">TRADE</span> AI
         </h1>
@@ -30,7 +30,7 @@ export default function Landing() {
 
       <StackAnimation />
 
-      <section className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto px-6 pb-20">
+      <section className="grid md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
         <FeatureCard
           icon={<ShieldCheck size={28} />}
           title="Fraud Detection"

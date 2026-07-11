@@ -9,8 +9,8 @@ const LAYERS = [
 
 export default function StackAnimation() {
   return (
-    <div style={styles.wrapper}>
-      <div style={styles.scene}>
+    <div style={styles.wrapper} className="fortitrade-wrapper">
+      <div style={styles.scene} className="fortitrade-scene">
         {/* Scanning beam */}
         <div style={styles.beam} />
 
@@ -51,6 +51,42 @@ export default function StackAnimation() {
           10% { opacity: 1; }
           90% { opacity: 1; }
           100% { top: 110%; opacity: 0; }
+        }
+
+        /* Mobile responsiveness — scale the whole scene down so
+           fixed-width cubes (260px) never overflow narrow screens */
+        .fortitrade-scene {
+          transform-origin: center center;
+          transition: transform 0.2s ease;
+        }
+
+        .fortitrade-wrapper {
+          overflow: hidden;
+          padding: 0 16px;
+        }
+
+        @media (max-width: 480px) {
+          .fortitrade-scene {
+            transform: scale(0.5);
+          }
+          .fortitrade-wrapper {
+            min-height: 320px !important;
+          }
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+          .fortitrade-scene {
+            transform: scale(0.7);
+          }
+          .fortitrade-wrapper {
+            min-height: 400px !important;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .fortitrade-scene {
+            transform: scale(0.85);
+          }
         }
       `}</style>
     </div>
