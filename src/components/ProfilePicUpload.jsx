@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Camera, Trash2 } from "lucide-react";
 import { authApi } from "../api/client";
 
-const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+const MAX_FILE_SIZE = 8 * 1024 * 1024; // 8MB, raised for GIF support
 
 export default function ProfilePicUpload({ user, onUpdate }) {
   const fileInputRef = useRef(null);
@@ -20,7 +20,7 @@ export default function ProfilePicUpload({ user, onUpdate }) {
       return;
     }
     if (file.size > MAX_FILE_SIZE) {
-      setError("Image too large — keep it under 2MB");
+      setError("Image too large — keep it under 8MB");
       return;
     }
 
