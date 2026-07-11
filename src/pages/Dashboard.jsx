@@ -37,6 +37,9 @@ export default function Dashboard() {
   useEffect(() => {
     loadTrades();
     loadUser();
+    const interval = setInterval(loadTrades, 10000); // refresh trade history every 10s
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTradeResult = (result) => {
@@ -73,8 +76,8 @@ export default function Dashboard() {
         <div className="bg-forti-panel border border-forti-cyan-dim/40 rounded-xl p-6 flex items-center gap-6">
           <ProfilePicUpload user={user} onUpdate={setUser} />
           <div>
-            <p className="text-forti-cyan font-bold tracking-wide">{user?.name}</p>
-            <p className="text-forti-cyan/50 text-xs mt-1 tracking-widest uppercase">FortiTrade AI</p>
+            <p className="text-forti-cyan font-bold tracking-wide">{user?.name || user?.email}</p>
+            <p className="text-forti-cyan/50 text-xs mt-1">{user?.email}</p>
           </div>
         </div>
 
